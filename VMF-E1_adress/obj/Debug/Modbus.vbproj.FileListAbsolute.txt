@@ -1,0 +1,33 @@
+C:\Users\Alexey\source\repos\Modbus\bin\Debug\Modbus.exe
+C:\Users\Alexey\source\repos\Modbus\bin\Debug\Modbus.pdb
+C:\Users\Alexey\source\repos\Modbus\bin\Debug\Modbus.xml
+C:\Users\Alexey\source\repos\Modbus\obj\Debug\Modbus.vbproj.AssemblyReference.cache
+C:\Users\Alexey\source\repos\Modbus\obj\Debug\Modbus.Form1.resources
+C:\Users\Alexey\source\repos\Modbus\obj\Debug\Modbus.Resources.resources
+C:\Users\Alexey\source\repos\Modbus\obj\Debug\Modbus.vbproj.GenerateResource.cache
+C:\Users\Alexey\source\repos\Modbus\obj\Debug\Modbus.vbproj.CoreCompileInputs.cache
+C:\Users\Alexey\source\repos\Modbus\obj\Debug\Modbus.exe
+C:\Users\Alexey\source\repos\Modbus\obj\Debug\Modbus.xml
+C:\Users\Alexey\source\repos\Modbus\obj\Debug\Modbus.pdb
+C:\Users\Alexey\source\repos\Serial Port\bin\Debug\Modbus.exe
+C:\Users\Alexey\source\repos\Serial Port\bin\Debug\Modbus.pdb
+C:\Users\Alexey\source\repos\Serial Port\bin\Debug\Modbus.xml
+C:\Users\Alexey\source\repos\Serial Port\obj\Debug\Modbus.vbproj.AssemblyReference.cache
+C:\Users\Alexey\source\repos\Serial Port\obj\Debug\Modbus.Form1.resources
+C:\Users\Alexey\source\repos\Serial Port\obj\Debug\Modbus.Resources.resources
+C:\Users\Alexey\source\repos\Serial Port\obj\Debug\Modbus.vbproj.GenerateResource.cache
+C:\Users\Alexey\source\repos\Serial Port\obj\Debug\Modbus.vbproj.CoreCompileInputs.cache
+C:\Users\Alexey\source\repos\Serial Port\obj\Debug\Modbus.exe
+C:\Users\Alexey\source\repos\Serial Port\obj\Debug\Modbus.xml
+C:\Users\Alexey\source\repos\Serial Port\obj\Debug\Modbus.pdb
+C:\Users\Alexey\source\repos\VMF-E1_adress\obj\Debug\Modbus.vbproj.AssemblyReference.cache
+C:\Users\Alexey\source\repos\VMF-E1_adress\obj\Debug\Modbus.Form1.resources
+C:\Users\Alexey\source\repos\VMF-E1_adress\obj\Debug\Modbus.Resources.resources
+C:\Users\Alexey\source\repos\VMF-E1_adress\obj\Debug\Modbus.vbproj.GenerateResource.cache
+C:\Users\Alexey\source\repos\VMF-E1_adress\obj\Debug\Modbus.vbproj.CoreCompileInputs.cache
+C:\Users\Alexey\source\repos\VMF-E1_adress\obj\Debug\Modbus.exe
+C:\Users\Alexey\source\repos\VMF-E1_adress\obj\Debug\Modbus.xml
+C:\Users\Alexey\source\repos\VMF-E1_adress\obj\Debug\Modbus.pdb
+C:\Users\Alexey\source\repos\VMF-E1_adress\bin\Debug\Modbus.exe
+C:\Users\Alexey\source\repos\VMF-E1_adress\bin\Debug\Modbus.pdb
+C:\Users\Alexey\source\repos\VMF-E1_adress\bin\Debug\Modbus.xml
