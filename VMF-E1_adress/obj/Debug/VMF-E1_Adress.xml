@@ -22,5 +22,10 @@ VMF-E1_Adress
   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
 </summary>
 </member>
+<member name="P:Modbus.My.Resources.Resources.EasyModbus">
+<summary>
+  Поиск локализованного ресурса типа System.Byte[].
+</summary>
+</member>
 </members>
 </doc>
