@@ -1,4 +1,3 @@
-C:\GitHub\Aermec-VMF-E1_rus\VMF-E1_adress\obj\Debug\VMF-E1 Adress.vbproj.AssemblyReference.cache
 C:\GitHub\Aermec-VMF-E1_rus\VMF-E1_adress\obj\Debug\Modbus.Form1.resources
 C:\GitHub\Aermec-VMF-E1_rus\VMF-E1_adress\obj\Debug\Modbus.Resources.resources
 C:\GitHub\Aermec-VMF-E1_rus\VMF-E1_adress\obj\Debug\VMF-E1 Adress.vbproj.GenerateResource.cache
@@ -9,3 +8,4 @@ C:\GitHub\Aermec-VMF-E1_rus\VMF-E1_adress\bin\Debug\VMF-E1_Adress.xml
 C:\GitHub\Aermec-VMF-E1_rus\VMF-E1_adress\obj\Debug\VMF-E1_Adress.exe
 C:\GitHub\Aermec-VMF-E1_rus\VMF-E1_adress\obj\Debug\VMF-E1_Adress.xml
 C:\GitHub\Aermec-VMF-E1_rus\VMF-E1_adress\obj\Debug\VMF-E1_Adress.pdb
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1_adress\obj\Debug\VMF-E1 Adress.vbprojAssemblyReference.cache

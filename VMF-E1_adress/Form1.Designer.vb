@@ -29,6 +29,8 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ComboBox1
@@ -84,11 +86,31 @@ Partial Class Form1
         Me.SerialPort1.PortName = "C"
         Me.SerialPort1.ReadTimeout = 200
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(118, 75)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(106, 36)
+        Me.Button3.TabIndex = 7
+        Me.Button3.Text = "Пказать адрес на панеле"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(235, 75)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(106, 36)
+        Me.Button4.TabIndex = 7
+        Me.Button4.Text = "Вернуться в нормальный режим"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(673, 435)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Button2)
@@ -107,4 +129,6 @@ Partial Class Form1
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button2 As Button
     Friend WithEvents SerialPort1 As IO.Ports.SerialPort
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
 End Class

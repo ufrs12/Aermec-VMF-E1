@@ -1,5 +1,6 @@
 ﻿Imports System.IO.Ports
 Public Class Form1
+
     Private Sub ComboBox1_Enter(sender As Object, e As EventArgs) Handles ComboBox1.Enter
         ComboBox1.Items.Clear()
         For Each sp As String In My.Computer.Ports.SerialPortNames
@@ -7,6 +8,7 @@ Public Class Form1
         Next
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
         If Button1.Text = "Открыть порт" Then
             Try
                 SerialPort1.PortName = ComboBox1.SelectedItem
@@ -38,5 +40,17 @@ Public Class Form1
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         TextBox1.Text = SerialPort1.StopBits.ToString & SerialPort1.BaudRate.ToString & SerialPort1.Parity.ToString & SerialPort1.DataBits.ToString & SerialPort1.Handshake.ToString
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        'SerialPort1.Write("1710000D000102000440EE")
+        Dim bytes() As Byte = System.Text.Encoding.UTF8.GetBytes("1710000D000102000440EE")
+        SerialPort1.Write(bytes, 0, bytes.Length)
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        'SerialPort1.Write("1710000D0001020000412D")
+        Dim bytes() As Byte = System.Text.Encoding.UTF8.GetBytes("1710000D0001020000412D")
+        SerialPort1.Write(bytes, 0, bytes.Length)
     End Sub
 End Class
