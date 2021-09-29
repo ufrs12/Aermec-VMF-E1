@@ -1,6 +1,13 @@
 ﻿Imports System.IO.Ports
 Imports EasyModbus
+Imports System.ComponentModel
 Public Class Form1
+
+    Public Sub New()
+        InitializeComponent()
+        BackgroundWorker1.WorkerReportsProgress = True
+        BackgroundWorker1.WorkerSupportsCancellation = True
+    End Sub
     Dim modbusClient As ModbusClient
     Private Sub ComboBox1_Enter(sender As Object, e As EventArgs) Handles ComboBox1.Enter
         ComboBox1.Items.Clear()
@@ -9,9 +16,9 @@ Public Class Form1
         Next
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
         If Button1.Text = "Открыть порт" Then
             Try
-
                 'SerialPort1.PortName = ComboBox1.SelectedItem
                 'SerialPort1.BaudRate = 19200
                 'SerialPort1.Parity = 0
@@ -60,41 +67,18 @@ Public Class Form1
         Next i
         Return raw
     End Function
-
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        If Button1.Text = "Сканировать" Then
-            Dim h, l As Integer
-            Try
-                Button5.Text = "Остановить"
-                For i As Integer = 1 To 50
-                    ProgressBar1.Visible = True
-                    ProgressBar1.Value = i
-                    Try
-                        modbusClient = New ModbusClient(ComboBox1.SelectedItem) With {
-                        .UnitIdentifier = i,
-                        .Parity = 0,
-                        .StopBits = StopBits.Two,
-                        .ConnectionTimeout = 200
-                        }
-                        modbusClient.Connect()
-                        Dim ReadValues() As Integer = modbusClient.ReadHoldingRegisters(40021, 1)
-                        ListBox1.Items.Add(ReadValues(0))
-                        modbusClient.Disconnect()
-                    Catch ex As Exception
-                        'MessageBox.Show(ex.Message)
-                        modbusClient.Disconnect()
-                    End Try
-                Next
-                ProgressBar1.Visible = False
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-            End Try
+        Label7.Text = ""
+        If BackgroundWorker1.IsBusy <> True Then
+            BackgroundWorker1.RunWorkerAsync()
+            Button5.Text = "Остановить"
         Else
-            Button1.Text = "Сканировать"
+            BackgroundWorker1.CancelAsync()
+            Button5.Text = "Сканировать"
         End If
     End Sub
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CheckForIllegalCrossThreadCalls = False
         RadioButton1.Checked = True
         TextBox3.Text = 1
         TextBox4.Text = 50
@@ -120,5 +104,68 @@ Public Class Form1
         GroupBox1.Enabled = False
         GroupBox2.Enabled = False
         GroupBox3.Enabled = True
+    End Sub
+    Private Sub backgroundWorker1_DoWork(ByVal sender As System.Object,
+    ByVal e As DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+        Dim worker As BackgroundWorker = CType(sender, BackgroundWorker)
+        Dim hi, lo, kol As Integer
+        Try
+            If RadioButton1.Checked = True Then
+                hi = TextBox2.Text
+                lo = TextBox2.Text
+            End If
+            If RadioButton2.Checked = True Then
+                lo = TextBox3.Text
+                hi = TextBox4.Text
+            End If
+            If RadioButton3.Checked = True Then
+                lo = 1
+                hi = 247
+            End If
+            ProgressBar1.Value = 0
+            ProgressBar1.Visible = True
+            ProgressBar1.Maximum = hi - lo + 1
+            kol = 0
+        Catch ex As Exception
+            BackgroundWorker1.CancelAsync()
+            'Button5.Text = "Сканировать"
+            'ProgressBar1.Visible = False
+            'MessageBox.Show(ex.Message)
+        End Try
+        For i = lo To hi
+            If (worker.CancellationPending = True) Then
+                e.Cancel = True
+                Exit For
+            Else
+                Try
+                    modbusClient = New ModbusClient(ComboBox1.SelectedItem)
+                Catch ex As Exception
+                    Exit For
+                End Try
+                Try
+                    modbusClient.UnitIdentifier = i
+                    modbusClient.Parity = 0
+                    modbusClient.StopBits = StopBits.Two
+                    modbusClient.ConnectionTimeout = 200
+                    modbusClient.Connect()
+                    Dim ReadValues() As Integer = modbusClient.ReadHoldingRegisters(40021, 1)
+                    ListBox1.Items.Add(ReadValues(0))
+                    modbusClient.Disconnect()
+                Catch ex As Exception
+                    'MessageBox.Show(ex.Message)
+                    If modbusClient IsNot Nothing AndAlso modbusClient.Connected Then
+                        modbusClient.Disconnect()
+                    End If
+                End Try
+                kol += 1
+                ProgressBar1.Value = kol
+            End If
+        Next
+        Button5.Text = "Сканировать"
+        ProgressBar1.Visible = False
+        Label6.Text = "Опрошено адресов: " & kol & "."
+        If kol = 0 Then
+            Label7.Text = "Проверьте параметры"
+        End If
     End Sub
 End Class

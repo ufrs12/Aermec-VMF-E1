@@ -47,6 +47,9 @@ Partial Class Form1
         Me.Label5 = New System.Windows.Forms.Label()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -125,30 +128,28 @@ Partial Class Form1
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(367, 183)
+        Me.Button5.Location = New System.Drawing.Point(355, 178)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(85, 41)
+        Me.Button5.Size = New System.Drawing.Size(82, 41)
         Me.Button5.TabIndex = 8
         Me.Button5.Text = "Сканировать"
         Me.Button5.UseVisualStyleBackColor = True
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(458, 197)
+        Me.ProgressBar1.Location = New System.Drawing.Point(443, 186)
         Me.ProgressBar1.Maximum = 50
-        Me.ProgressBar1.Minimum = 1
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(104, 10)
+        Me.ProgressBar1.Size = New System.Drawing.Size(117, 10)
         Me.ProgressBar1.TabIndex = 9
-        Me.ProgressBar1.Value = 1
         Me.ProgressBar1.Visible = False
         '
         'ListBox1
         '
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(568, 12)
+        Me.ListBox1.Location = New System.Drawing.Point(568, 20)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(96, 212)
+        Me.ListBox1.Size = New System.Drawing.Size(108, 212)
         Me.ListBox1.TabIndex = 10
         '
         'TextBox2
@@ -272,11 +273,34 @@ Partial Class Form1
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         '
+        'BackgroundWorker1
+        '
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(437, 206)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(0, 13)
+        Me.Label6.TabIndex = 16
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.Red
+        Me.Label7.Location = New System.Drawing.Point(396, 222)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(0, 13)
+        Me.Label7.TabIndex = 17
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(673, 551)
+        Me.ClientSize = New System.Drawing.Size(736, 551)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.RadioButton3)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
@@ -330,4 +354,7 @@ Partial Class Form1
     Friend WithEvents Label5 As Label
     Friend WithEvents RadioButton3 As RadioButton
     Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
 End Class
