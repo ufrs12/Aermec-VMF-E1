@@ -29,6 +29,7 @@ namespace ModbusCS
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Label7 = new System.Windows.Forms.Label();
             this.Label6 = new System.Windows.Forms.Label();
             this.RadioButton3 = new System.Windows.Forms.RadioButton();
@@ -53,10 +54,6 @@ namespace ModbusCS
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -79,6 +76,10 @@ namespace ModbusCS
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBox1.SuspendLayout();
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
@@ -288,7 +289,7 @@ namespace ModbusCS
             // 
             this.button1.Location = new System.Drawing.Point(6, 168);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 36);
+            this.button1.Size = new System.Drawing.Size(79, 36);
             this.button1.TabIndex = 31;
             this.button1.Text = "Начать опрос";
             this.button1.UseVisualStyleBackColor = true;
@@ -310,7 +311,7 @@ namespace ModbusCS
             this.groupBox4.Controls.Add(this.GroupBox3);
             this.groupBox4.Controls.Add(this.RadioButton2);
             this.groupBox4.Controls.Add(this.GroupBox2);
-            this.groupBox4.Location = new System.Drawing.Point(12, 12);
+            this.groupBox4.Location = new System.Drawing.Point(1, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(341, 274);
             this.groupBox4.TabIndex = 32;
@@ -320,45 +321,24 @@ namespace ModbusCS
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(111, 15);
+            this.dataGridView1.Location = new System.Drawing.Point(91, 10);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(471, 443);
             this.dataGridView1.TabIndex = 33;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "№";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 30;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Параметр";
-            this.Column1.MinimumWidth = 230;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column1.Width = 230;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Значение";
-            this.Column2.Name = "Column2";
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column2.Width = 140;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "В регистре";
-            this.Column3.Name = "Column3";
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column3.Width = 70;
             // 
             // groupBox5
             // 
@@ -372,9 +352,9 @@ namespace ModbusCS
             this.groupBox5.Controls.Add(this.dataGridView1);
             this.groupBox5.Controls.Add(this.button1);
             this.groupBox5.Enabled = false;
-            this.groupBox5.Location = new System.Drawing.Point(359, 12);
+            this.groupBox5.Location = new System.Drawing.Point(348, 2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(588, 465);
+            this.groupBox5.Size = new System.Drawing.Size(568, 458);
             this.groupBox5.TabIndex = 34;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Параметры";
@@ -389,7 +369,7 @@ namespace ModbusCS
             this.groupBox6.Controls.Add(this.button3);
             this.groupBox6.Controls.Add(this.button2);
             this.groupBox6.Enabled = false;
-            this.groupBox6.Location = new System.Drawing.Point(12, 292);
+            this.groupBox6.Location = new System.Drawing.Point(1, 276);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(341, 64);
             this.groupBox6.TabIndex = 35;
@@ -427,7 +407,7 @@ namespace ModbusCS
             this.groupBox7.Controls.Add(this.button6);
             this.groupBox7.Controls.Add(this.button4);
             this.groupBox7.Enabled = false;
-            this.groupBox7.Location = new System.Drawing.Point(12, 362);
+            this.groupBox7.Location = new System.Drawing.Point(1, 345);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(341, 115);
             this.groupBox7.TabIndex = 36;
@@ -572,22 +552,59 @@ namespace ModbusCS
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(64, 146);
+            this.label14.Location = new System.Drawing.Point(57, 146);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(9, 13);
             this.label14.TabIndex = 36;
             this.label14.Text = "|";
             this.label14.Visible = false;
             // 
+            // Column4
+            // 
+            this.Column4.FillWeight = 30F;
+            this.Column4.HeaderText = "№";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column4.Width = 30;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Параметр";
+            this.Column1.MinimumWidth = 230;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column1.Width = 230;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Значение";
+            this.Column2.Name = "Column2";
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column2.Width = 140;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "В регистре";
+            this.Column3.Name = "Column3";
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column3.Width = 70;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(954, 479);
+            this.ClientSize = new System.Drawing.Size(918, 462);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.Text = "VMF-E1-Modbus";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -635,10 +652,6 @@ namespace ModbusCS
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button3;
@@ -660,6 +673,10 @@ namespace ModbusCS
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
 

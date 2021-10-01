@@ -31,7 +31,7 @@ namespace ModbusCS
             dataGridView1.Rows.Add(2,"Температура теплоносителя (хладагента)", "", "");
             dataGridView1.Rows.Add(3,"Температура дополнительного датчика", "", "");
             dataGridView1.Rows.Add(4,"Действующая уставка температуры", "", "");
-            dataGridView1.Rows.Add(5,"Уставка скорости вентилятора", "", "");
+            dataGridView1.Rows.Add(5,"Режим", "", "");
             dataGridView1.Rows.Add(6,"Реальная скорость вентилятора", "", "");
             dataGridView1.Rows.Add(7,"Уставка запуска вентилятора", "", "");
             dataGridView1.Rows.Add(8,"Код аварии", "", "");
@@ -319,6 +319,10 @@ namespace ModbusCS
                         {
                             dataGridView1[2, 4].Value = Convert.ToDecimal(dataGridView1[3, 4].Value) / 10;
                         }
+                        // Режим
+                        String [] r = new string[] { "OFF", "AUTO", "Проветривание 1", "Проветривание 2", "Проветривание 3", "AUX" };
+                        dataGridView1[2, 5].Value = r[Convert.ToInt32(dataGridView1[3, 5].Value) - 1];
+
                         if (label14.Text == "---")
                         {
                             label14.Text = @" \";
