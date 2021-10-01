@@ -1,5 +1,5 @@
 # Aermec-VMF-E1 rus
-* Скомпилированное приложение по смене адреса можно скачать [ЗДЕСЬ](https://github.com/ufrs12/Aermec-VMF-E1_rus/blob/main/VMF-E1_adress/bin/Debug/VMF-E1_Adress.exe)
+* Скомпилированное приложение по смене адреса можно скачать [ЗДЕСЬ](https://github.com/ufrs12/Aermec-VMF-E1_rus/blob/main/VMF-E1-Modbus/bin/Debug/ModbusCS.exe)
 ### Список файлов и папок:
 * VMF-E1_adress - исходники проекта приложения по смене адреса. Visual Basic.NET
 * Aermec VMF-E1.pdf - мануал на русском
