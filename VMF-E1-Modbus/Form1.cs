@@ -457,6 +457,7 @@ namespace ModbusCS
             label14.Visible = false;
             groupBox4.Enabled = true;
             groupBox6.Enabled = true;
+
         }
     }
 }
