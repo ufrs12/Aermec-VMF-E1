@@ -10,6 +10,7 @@ namespace ModbusCS
         int lo;
         int hi;
         int kol;
+        int adr_ch;
         private ModbusClient modbusClient;
         public Form1()
         {
@@ -24,31 +25,30 @@ namespace ModbusCS
             TextBox2.TextAlign = HorizontalAlignment.Center;
             TextBox3.TextAlign = HorizontalAlignment.Center;
             TextBox4.TextAlign = HorizontalAlignment.Center;
-            dataGridView1.Rows.Add("Температура воздуха на фанкойле", "", "");
-            dataGridView1.Rows.Add("Температура воздуха на панеле", "", "");
-            dataGridView1.Rows.Add("Температура теплоносителя (хладагента)", "", "");
-            dataGridView1.Rows.Add("Температура дополнительного датчика", "", "");
-            dataGridView1.Rows.Add("Действующая уставка температуры", "", "");
-            dataGridView1.Rows.Add("Уставка скорости вентилятора", "", "");
-            dataGridView1.Rows.Add("Реальная скорость вентилятора", "", "");
-            dataGridView1.Rows.Add("Уставка запуска вентилятора", "", "");
-            dataGridView1.Rows.Add("Код аварии", "", "");
-            dataGridView1.Rows.Add("Положение DIP-переключателей", "", "");
-            dataGridView1.Rows.Add("", "", "");
-            dataGridView1.Rows.Add("", "", "");
-            dataGridView1.Rows.Add("", "", "");
-            dataGridView1.Rows.Add("Манипуляции с адресом", "", "");
-            dataGridView1.Rows.Add("", "", "");
-            dataGridView1.Rows.Add("Уставка полученная по удаленке", "", "");
-            dataGridView1.Rows.Add("", "", "");
-            dataGridView1.Rows.Add("", "", "");
-            dataGridView1.Rows.Add("", "", "");
-            dataGridView1.Rows.Add("", "", "");
-            dataGridView1.Rows.Add("Адрес", "", "");
+            dataGridView1.Rows.Add(0,"Температура воздуха на фанкойле", "", "");
+            dataGridView1.Rows.Add(1,"Температура воздуха на панеле", "", "");
+            dataGridView1.Rows.Add(2,"Температура теплоносителя (хладагента)", "", "");
+            dataGridView1.Rows.Add(3,"Температура дополнительного датчика", "", "");
+            dataGridView1.Rows.Add(4,"Действующая уставка температуры", "", "");
+            dataGridView1.Rows.Add(5,"Уставка скорости вентилятора", "", "");
+            dataGridView1.Rows.Add(6,"Реальная скорость вентилятора", "", "");
+            dataGridView1.Rows.Add(7,"Уставка запуска вентилятора", "", "");
+            dataGridView1.Rows.Add(8,"Код аварии", "", "");
+            dataGridView1.Rows.Add(9,"Положение DIP-переключателей", "", "");
+            dataGridView1.Rows.Add(10,"", "", "");
+            dataGridView1.Rows.Add(11,"", "", "");
+            dataGridView1.Rows.Add(12,"", "", "");
+            dataGridView1.Rows.Add(13,"Манипуляции с адресом", "", "");
+            dataGridView1.Rows.Add(14,"", "", "");
+            dataGridView1.Rows.Add(15,"Уставка полученная по удаленке", "", "");
+            dataGridView1.Rows.Add(16,"", "", "");
+            dataGridView1.Rows.Add(17,"", "", "");
+            dataGridView1.Rows.Add(18,"", "", "");
+            dataGridView1.Rows.Add(19,"", "", "");
+            dataGridView1.Rows.Add(20,"Адрес", "", "");
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
         }
         private void ComboBox1_Enter(object sender, EventArgs e)
         {
@@ -142,10 +142,6 @@ namespace ModbusCS
                         modbusClient = new ModbusClient(Convert.ToString(ComboBox1.SelectedItem))
                         {
                             UnitIdentifier = Convert.ToByte(i),
-                            Baudrate = 19200,
-                            Parity = System.IO.Ports.Parity.None,
-                            StopBits = System.IO.Ports.StopBits.Two,
-                            ConnectionTimeout = 200
                         };
                         modbusClient.Connect();
                         int[] adr = modbusClient.ReadHoldingRegisters(20, 1);
@@ -178,16 +174,170 @@ namespace ModbusCS
             {
                 Label7.Text = "Проверьте параметры";
             }
+            if (checkBox1.Checked == true && listBox2.Items.Count == 1)
+            {
+                groupBox7.Enabled = true;
+            }
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             groupBox5.Enabled = true;
+            groupBox6.Enabled = true;
+            adr_ch = Convert.ToInt32(listBox2.SelectedItem);
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            groupBox4.Enabled = false;
+            if (backgroundWorker2.IsBusy != true)
+            {
+                groupBox4.Enabled = false;
+                groupBox6.Enabled = false;
+                button1.Text = "Остановить опрос";
+                backgroundWorker2.RunWorkerAsync();
+            }
+            else
+            {
+                backgroundWorker2.CancelAsync();
+                Button5.Text = "Начать опрос";
+                groupBox4.Enabled = false;
+                groupBox6.Enabled = false;
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modbusClient = new ModbusClient(Convert.ToString(ComboBox1.SelectedItem))
+                {
+                    UnitIdentifier = Convert.ToByte(adr_ch),
+                };
+                modbusClient.Connect();
+                modbusClient.WriteMultipleRegisters(13, new int[] { 4 });
+                modbusClient.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                if (modbusClient != null)
+                {
+                    modbusClient.Disconnect();
+                }
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+                try
+                {
+                    modbusClient = new ModbusClient(Convert.ToString(ComboBox1.SelectedItem))
+                    {
+                        UnitIdentifier = Convert.ToByte(adr_ch),
+                    };
+                    modbusClient.Connect();
+                    modbusClient.WriteMultipleRegisters(13, new int[] {0});
+                    modbusClient.Disconnect();
+                }
+                catch (Exception ex)
+                {
+                    if (modbusClient != null)
+                    {
+                        modbusClient.Disconnect();
+                    }
+                    MessageBox.Show(ex.Message);
+                }
+        }
+
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modbusClient = new ModbusClient(Convert.ToString(ComboBox1.SelectedItem))
+                {
+                    UnitIdentifier = Convert.ToByte(0),
+                };
+                modbusClient.Connect();
+                modbusClient.WriteMultipleRegisters(13, new int[] { 8 });
+                modbusClient.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                if (modbusClient != null)
+                {
+                    modbusClient.Disconnect();
+                }
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modbusClient = new ModbusClient(Convert.ToString(ComboBox1.SelectedItem))
+                {
+                    UnitIdentifier = Convert.ToByte(0),
+                };
+                modbusClient.Connect();
+                modbusClient.WriteMultipleRegisters(20, new int[] { Convert.ToInt16(textBox1.Text) });
+                modbusClient.WriteMultipleRegisters(13, new int[] { 4 });
+                modbusClient.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                if (modbusClient != null)
+                {
+                    modbusClient.Disconnect();
+                }
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modbusClient = new ModbusClient(Convert.ToString(ComboBox1.SelectedItem))
+                {
+                    UnitIdentifier = Convert.ToByte(0),
+                };
+                modbusClient.Connect();
+                modbusClient.WriteMultipleRegisters(13, new int[] { 0 });
+                modbusClient.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                if (modbusClient != null)
+                {
+                    modbusClient.Disconnect();
+                }
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modbusClient = new ModbusClient(Convert.ToString(ComboBox1.SelectedItem))
+                {
+                    UnitIdentifier = Convert.ToByte(0),
+                };
+                modbusClient.Connect();
+                modbusClient.WriteMultipleRegisters(13, new int[] { 4 });
+                modbusClient.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                if (modbusClient != null)
+                {
+                    modbusClient.Disconnect();
+                }
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

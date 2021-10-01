@@ -22,13 +22,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 using System;
-using System.Net.Sockets;
-using System.Net;
 using System.IO.Ports;
-using System.Reflection;
-using System.Text;
-using System.Collections.Generic;
-using ModbusExceptions;
 
 namespace EasyModbus
 {
@@ -47,13 +41,13 @@ namespace EasyModbus
 		private byte functionCode;
 		private byte [] startingAddress = new byte[2];
 		private byte [] quantity = new byte[2];
-        private int baudRate = 9600;
-        private int connectTimeout = 1000;
+        private int baudRate = 19200;
+        private int connectTimeout = 200;
         public byte[] receiveData;
         public byte[] sendData;
         private SerialPort serialport;
-        private Parity parity = Parity.Even;
-        private StopBits stopBits = StopBits.One;
+        private Parity parity = Parity.None;
+        private StopBits stopBits = StopBits.Two;
         private bool connected = false;
         public int NumberOfRetries { get; set; } = 0;
         private int countRetries = 0;

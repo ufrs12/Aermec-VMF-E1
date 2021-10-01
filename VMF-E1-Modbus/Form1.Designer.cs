@@ -53,16 +53,33 @@ namespace ModbusCS
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.GroupBox1.SuspendLayout();
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // Label7
@@ -272,6 +289,7 @@ namespace ModbusCS
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.checkBox1);
             this.groupBox4.Controls.Add(this.listBox2);
             this.groupBox4.Controls.Add(this.ComboBox1);
             this.groupBox4.Controls.Add(this.Label7);
@@ -297,6 +315,7 @@ namespace ModbusCS
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column4,
             this.Column1,
             this.Column2,
             this.Column3});
@@ -305,17 +324,11 @@ namespace ModbusCS
             this.dataGridView1.Size = new System.Drawing.Size(471, 443);
             this.dataGridView1.TabIndex = 33;
             // 
-            // groupBox5
+            // Column4
             // 
-            this.groupBox5.Controls.Add(this.dataGridView1);
-            this.groupBox5.Controls.Add(this.button1);
-            this.groupBox5.Enabled = false;
-            this.groupBox5.Location = new System.Drawing.Point(359, 12);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(588, 465);
-            this.groupBox5.TabIndex = 34;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Параметры";
+            this.Column4.HeaderText = "№";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 30;
             // 
             // Column1
             // 
@@ -340,11 +353,163 @@ namespace ModbusCS
             this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Column3.Width = 70;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.dataGridView1);
+            this.groupBox5.Controls.Add(this.button1);
+            this.groupBox5.Enabled = false;
+            this.groupBox5.Location = new System.Drawing.Point(359, 12);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(588, 465);
+            this.groupBox5.TabIndex = 34;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Параметры";
+            // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.button3);
+            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Enabled = false;
+            this.groupBox6.Location = new System.Drawing.Point(12, 292);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(341, 64);
+            this.groupBox6.TabIndex = 35;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Работа с адресом по адресу";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(179, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(144, 39);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Вернуться в нормальное состояние";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(16, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(144, 39);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Показать адрес на панеле";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label10);
+            this.groupBox7.Controls.Add(this.label9);
+            this.groupBox7.Controls.Add(this.label8);
+            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.button8);
+            this.groupBox7.Controls.Add(this.button7);
+            this.groupBox7.Controls.Add(this.button6);
+            this.groupBox7.Controls.Add(this.button4);
+            this.groupBox7.Enabled = false;
+            this.groupBox7.Location = new System.Drawing.Point(12, 362);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(341, 115);
+            this.groupBox7.TabIndex = 36;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Присвоение адреса";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(59, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(74, 38);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Запрос";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(246, 19);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(77, 38);
+            this.button6.TabIndex = 2;
+            this.button6.Text = "Записать";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(16, 63);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(164, 38);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "Вернуться";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(186, 63);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(144, 38);
+            this.button8.TabIndex = 34;
+            this.button8.Text = "Определить";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(16, 37);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(34, 20);
+            this.textBox1.TabIndex = 34;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(15, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 13);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "Адрес";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(139, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 13);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Нажать на панеле";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(146, 39);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "MODE/SELECT";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(9, 251);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(149, 17);
+            this.checkBox1.TabIndex = 34;
+            this.checkBox1.Text = "Для присвоения адреса";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 483);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Name = "Form1";
@@ -360,6 +525,9 @@ namespace ModbusCS
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -390,9 +558,24 @@ namespace ModbusCS
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
