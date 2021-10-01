@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Threading;
 using EasyModbus;
 using System.IO.Ports;
 namespace ModbusCS
@@ -127,7 +128,7 @@ namespace ModbusCS
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            worker.WorkerSupportsCancellation = true;
+            worker.WorkerSupportsCancellation = true;           
             for (int i = lo; i <= hi; i++)
             {
                 if (worker.CancellationPending == true)
@@ -142,6 +143,7 @@ namespace ModbusCS
                         modbusClient = new ModbusClient(Convert.ToString(ComboBox1.SelectedItem))
                         {
                             UnitIdentifier = Convert.ToByte(i),
+                            СountRetries = 0
                         };
                         modbusClient.Connect();
                         int[] adr = modbusClient.ReadHoldingRegisters(20, 1);
@@ -179,7 +181,6 @@ namespace ModbusCS
                 groupBox7.Enabled = true;
             }
         }
-
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             groupBox5.Enabled = true;
@@ -192,15 +193,14 @@ namespace ModbusCS
             {
                 groupBox4.Enabled = false;
                 groupBox6.Enabled = false;
+                groupBox7.Enabled = false;
+                label14.Visible = true;
                 button1.Text = "Остановить опрос";
                 backgroundWorker2.RunWorkerAsync();
             }
             else
             {
                 backgroundWorker2.CancelAsync();
-                Button5.Text = "Начать опрос";
-                groupBox4.Enabled = false;
-                groupBox6.Enabled = false;
             }
         }
         private void button2_Click(object sender, EventArgs e)
@@ -245,12 +245,126 @@ namespace ModbusCS
                     MessageBox.Show(ex.Message);
                 }
         }
-
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            worker.WorkerSupportsCancellation = true;
+            modbusClient = new ModbusClient(Convert.ToString(ComboBox1.SelectedItem))
+            {
+                UnitIdentifier = Convert.ToByte(adr_ch),
+                СountRetries = Convert.ToInt16(textBox8.Text),
+                ConnectionTimeout = Convert.ToInt16(textBox7.Text)
+            };
+            modbusClient.Connect();
 
+            while (true)
+            {
+                if (worker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    modbusClient.Disconnect();
+                    break;
+                }
+                else
+                {
+                    //try
+                    //{
+                        int[] regs = modbusClient.ReadHoldingRegisters(0, 21);
+                        if (regs[20] != 0)
+                        {
+
+                            int a = 0;
+                            foreach (int i in regs)
+                            {
+                                dataGridView1[3, a].Value = i;
+                                a++;
+                            }
+                            if (Convert.ToInt32(dataGridView1[3, 0].Value) > 1500)
+                            {
+                                dataGridView1[2, 0].Value = "Трабл датчика";
+                            }
+                            else
+                            {
+                                dataGridView1[2, 0].Value = Convert.ToDecimal(dataGridView1[3, 0].Value) / 10;
+                            }
+                        if (Convert.ToInt32(dataGridView1[3, 1].Value) > 1500)
+                        {
+                            dataGridView1[2, 1].Value = "Трабл датчика";
+                        }
+                        else
+                        {
+                            dataGridView1[2, 1].Value = Convert.ToDecimal(dataGridView1[3, 1].Value) / 10;
+                        }
+                        if (Convert.ToInt32(dataGridView1[3, 2].Value) > 1500)
+                        {
+                            dataGridView1[2, 2].Value = "Трабл датчика";
+                        }
+                        else
+                        {
+                            dataGridView1[2, 2].Value = Convert.ToDecimal(dataGridView1[3, 2].Value) / 10;
+                        }
+                        if (Convert.ToInt32(dataGridView1[3, 3].Value) > 1500)
+                        {
+                            dataGridView1[2, 3].Value = "Трабл датчика";
+                        }
+                        else
+                        {
+                            dataGridView1[2, 3].Value = Convert.ToDecimal(dataGridView1[3, 3].Value) / 10;
+                        }
+                        if (Convert.ToInt32(dataGridView1[3, 4].Value) > 1500)
+                        {
+                            dataGridView1[2, 4].Value = "Трабл датчика";
+                        }
+                        else
+                        {
+                            dataGridView1[2, 4].Value = Convert.ToDecimal(dataGridView1[3, 4].Value) / 10;
+                        }
+                        if (label14.Text == "---")
+                        {
+                            label14.Text = @" \";
+                        }
+                        else
+                        {
+                            if (label14.Text == @" \")
+                            {
+                                label14.Text = " |";
+                            }
+                            else
+                            {
+                                if (label14.Text == " |")
+                                {
+                                    label14.Text = " /";
+                                }
+                                else
+                                {
+                                    label14.Text = "---";
+                                }
+                            }
+                        }
+                        }
+
+                        else
+                        {
+                            groupBox5.Enabled = false;
+                            groupBox6.Enabled = false;
+                            groupBox7.Enabled = false;
+                            break;
+                        }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    if (modbusClient != null)
+                    //    {
+                    //        modbusClient.Disconnect();
+                    //    }
+                    //    MessageBox.Show(ex.Message);
+                    //    modbusClient.Disconnect();
+                    //    break;
+                    //}
+                    Thread.Sleep(Convert.ToInt16(textBox6.Text));
+                }
+            }
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             try
@@ -272,7 +386,6 @@ namespace ModbusCS
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void button6_Click(object sender, EventArgs e)
         {
             try
@@ -295,7 +408,6 @@ namespace ModbusCS
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void button7_Click(object sender, EventArgs e)
         {
             try
@@ -317,7 +429,6 @@ namespace ModbusCS
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void button8_Click(object sender, EventArgs e)
         {
             try
@@ -338,6 +449,14 @@ namespace ModbusCS
                 }
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            button1.Text = "Начать опрос";
+            label14.Visible = false;
+            groupBox4.Enabled = true;
+            groupBox6.Enabled = true;
         }
     }
 }

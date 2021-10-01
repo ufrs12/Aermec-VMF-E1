@@ -2001,6 +2001,19 @@ namespace EasyModbus
                 connectTimeout = value;
             }
         }
+        public int ÑountRetries
+        {
+            get
+            {
+                return countRetries;
+            }
+            set
+            {
+                countRetries = value;
+            }
+        }
+
+        
 
         /// Gets or Sets the serial Port
         public string SerialPort
