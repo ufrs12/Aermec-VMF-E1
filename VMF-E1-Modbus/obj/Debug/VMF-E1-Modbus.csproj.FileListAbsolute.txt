@@ -1,0 +1,10 @@
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1-Modbus\bin\Debug\ModbusCS.exe
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1-Modbus\bin\Debug\ModbusCS.pdb
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1-Modbus\obj\Debug\VMF-E1-Modbus.csproj.AssemblyReference.cache
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1-Modbus\obj\Debug\ModbusCS.Form1.resources
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1-Modbus\obj\Debug\ModbusCS.Properties.Resources.resources
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1-Modbus\obj\Debug\VMF-E1-Modbus.csproj.GenerateResource.cache
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1-Modbus\obj\Debug\VMF-E1-Modbus.csproj.CoreCompileInputs.cache
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1-Modbus\obj\Debug\ModbusCS.exe
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1-Modbus\obj\Debug\ModbusCS.pdb
+C:\GitHub\Aermec-VMF-E1_rus\VMF-E1-Modbus\bin\Debug\ModbusCS.exe.config

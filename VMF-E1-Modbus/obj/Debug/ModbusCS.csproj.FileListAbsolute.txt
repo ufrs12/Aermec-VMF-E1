@@ -1,0 +1,9 @@
+C:\Users\Alexey\source\repos\ModbusCS\bin\Debug\ModbusCS.exe
+C:\Users\Alexey\source\repos\ModbusCS\bin\Debug\ModbusCS.pdb
+C:\Users\Alexey\source\repos\ModbusCS\obj\Debug\ModbusCS.csproj.AssemblyReference.cache
+C:\Users\Alexey\source\repos\ModbusCS\obj\Debug\ModbusCS.Form1.resources
+C:\Users\Alexey\source\repos\ModbusCS\obj\Debug\ModbusCS.Properties.Resources.resources
+C:\Users\Alexey\source\repos\ModbusCS\obj\Debug\ModbusCS.csproj.GenerateResource.cache
+C:\Users\Alexey\source\repos\ModbusCS\obj\Debug\ModbusCS.csproj.CoreCompileInputs.cache
+C:\Users\Alexey\source\repos\ModbusCS\obj\Debug\ModbusCS.exe
+C:\Users\Alexey\source\repos\ModbusCS\obj\Debug\ModbusCS.pdb
